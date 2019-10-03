@@ -16,8 +16,8 @@ COPY Gemfile.lock /myapp/Gemfile.lock
 RUN gem install bundler
 RUN bundle install -j12
 RUN npm install -g yarn
-RUN yarn
 COPY . /myapp
+RUN yarn
 RUN rake assets:precompile
 
 # Add a script to be executed every time the container starts.
