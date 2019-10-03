@@ -17,8 +17,8 @@ RUN gem install bundler
 RUN bundle install -j12
 RUN npm install -g yarn
 RUN yarn
-RUN rake assets:precompile
 COPY . /myapp
+RUN rake assets:precompile
 
 # Add a script to be executed every time the container starts.
 # COPY entrypoint.sh /usr/bin/
