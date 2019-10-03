@@ -21,12 +21,8 @@ RUN bundle install -j12
 RUN npm install -g yarn
 COPY . /myapp
 RUN yarn
-RUN rake assets:precompile
 
-# Add a script to be executed every time the container starts.
-# COPY entrypoint.sh /usr/bin/
-# RUN chmod +x /usr/bin/entrypoint.sh
-# ENTRYPOINT ["entrypoint.sh"]
+RUN rake assets:precompile
 
 EXPOSE 3000
 
