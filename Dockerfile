@@ -15,7 +15,7 @@ COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 RUN gem install bundler
 RUN bundle install -j12
-RUN npm install yarn
+RUN npm install -g yarn
 RUN yarn
 RUN rake assets:precompile
 COPY . /myapp
