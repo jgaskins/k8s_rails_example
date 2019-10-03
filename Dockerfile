@@ -1,5 +1,5 @@
 FROM ruby:2.6.5-alpine3.10
-RUN apk add --update nodejs postgresql-client
+RUN apk add --update nodejs postgresql-client libxml2-dev
 RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
