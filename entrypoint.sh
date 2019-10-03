@@ -1,3 +1,3 @@
 #!/bin/sh
 
-yarn && bundle exec rails assets:precompile
+npm install -g yarn && yarn && bundle exec rails assets:precompile
