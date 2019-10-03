@@ -1,3 +1,3 @@
 #!/bin/sh
 
-bundle exec rails assets:precompile
+yarn && bundle exec rails assets:precompile

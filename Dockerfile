@@ -6,13 +6,16 @@ RUN apk add --update \
   git \
   postgresql-dev \
   nodejs \
+  npm \
   tzdata
+
 RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 RUN gem install bundler
 RUN bundle install -j12
+RUN npm install yarn
 COPY . /myapp
 
 # Add a script to be executed every time the container starts.
