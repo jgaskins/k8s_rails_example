@@ -2,6 +2,7 @@ FROM ruby:2.6.5-alpine3.10
 
 ARG APP_DOMAIN
 ARG RAILS_ENV
+ARG RAILS_MASTER_KEY
 
 RUN apk add --update \
   libxml2-dev \
@@ -30,6 +31,7 @@ EXPOSE 3000
 # Expose app domain to the app for Rails 6 DNS-rebinding attack protection
 ENV APP_DOMAIN ${APP_DOMAIN}
 ENV RAILS_ENV ${RAILS_ENV}
+ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
 
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]
