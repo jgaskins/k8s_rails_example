@@ -24,7 +24,7 @@ RUN npm install -g yarn
 COPY . /myapp
 RUN yarn
 
-RUN rake assets:precompile
+RUN bundle exec rake assets:precompile
 
 EXPOSE 3000
 
