@@ -1,7 +1,4 @@
-FROM ruby:2.6.5-alpine3.10
-
-ARG RAILS_ENV
-ARG RAILS_MASTER_KEY
+FROM ruby:3.0.2-alpine
 
 RUN apk add --update \
   libxml2-dev \
@@ -16,20 +13,14 @@ RUN apk add --update \
 RUN mkdir /myapp
 WORKDIR /myapp
 
-COPY Gemfile /myapp/Gemfile
-COPY Gemfile.lock /myapp/Gemfile.lock
+COPY Gemfile Gemfile.lock package.json yarn.lock /myapp/
 RUN gem install bundler
 RUN bundle install -j12
 RUN npm install -g yarn
-COPY . /myapp
 RUN yarn
 
+COPY . /myapp
 RUN bundle exec rake assets:precompile
 
-EXPOSE 3000
-
-ENV RAILS_ENV ${RAILS_ENV}
-ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
-
 # Start the main process.
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["rails", "server"]
